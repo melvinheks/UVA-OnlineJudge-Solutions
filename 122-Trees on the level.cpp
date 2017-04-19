@@ -61,5 +61,5 @@ int main()
             
         }
     }
-    cout << output.substr(0, output.length()-1);
+    cout << output;
 }
