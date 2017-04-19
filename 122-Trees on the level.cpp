@@ -9,16 +9,16 @@ using std::stoi;
 using std::to_string;
 string printlevels(map<string, int>& tree, int numrow){
     string out = "";
-    size_t count = 0;
     for(int i = 0; i <=numrow; i++){
-        count = 0;
         for(map<string, int>::iterator it = tree.begin(); it != tree.end(); it++){
+        	string key = (*it).first;
             if((*it).first.length() == i){
                 out += to_string((*it).second) + " ";
-                count++;
+                if(key.length() > 0 && tree.find(key.substr(0, key.length()-1)) == tree.end()){
+                	return "not complete\n";
+                }
             }
         }
-        if(!count)return "not complete\n";
     }
     return out.substr(0, out.length()-1) + "\n";
 }
@@ -63,4 +63,3 @@ int main()
     }
     cout << output.substr(0, output.length()-1);
 }
-
