@@ -7,9 +7,9 @@ using std::map;
 using std::string;
 using std::stoi;
 using std::to_string;
-string printlevels(map<string, int>& tree, int numrow){
+string printlevels(map<string, int>& tree, size_t numrow){
     string out = "";
-    for(int i = 0; i <=numrow; i++){
+    for(size_t i = 0; i <=numrow; i++){
         for(map<string, int>::iterator it = tree.begin(); it != tree.end(); it++){
         	string key = (*it).first;
             if((*it).first.length() == i){
@@ -36,7 +36,7 @@ int main()
     
     bool valid = true;
     
-    int numrow = 0;
+    size_t numrow = 0;
     while(cin >> s){
         compos = s.find(",");
         if(compos!=string::npos){
@@ -58,7 +58,8 @@ int main()
                 output += printlevels(tree, numrow);
             }
             tree.clear();
-            
+			numrow = 0;
+			valid = true;
         }
     }
     cout << output;
