@@ -11,6 +11,14 @@ int calculate(int nums[], bool isHighest){
 	if(isHighest)return 8*nums[0] + 6*nums[1] + 5*nums[2];
 	return 7*(nums[0] + nums[1]) + 5*nums[2];
 }
+bool checkDup(int nums[], int size){
+	for(int i = 0; i < size-1; i++){
+		for(int j = i+1; j < size; j++){
+			if(nums[i]==nums[j]) return true;
+		}
+	}
+	return false;
+}
 int main()
 {
 	int input[3][3];
