@@ -11,13 +11,8 @@ int calculate(int nums[], bool isHighest){
 	if(isHighest)return 8*nums[0] + 6*nums[1] + 5*nums[2];
 	return 7*(nums[0] + nums[1]) + 5*nums[2];
 }
-bool checkDup(int nums[], int size){
-	for(int i = 0; i < size-1; i++){
-		for(int j = i+1; j < size; j++){
-			if(nums[i]==nums[j]) return true;
-		}
-	}
-	return false;
+bool checkDup(int nums[]){
+	return nums[0]==nums[1];
 }
 int main()
 {
@@ -27,6 +22,7 @@ int main()
 	int indMax;
 	int result;
 	int sum = 0;
+	bool isDup;
 	cin >> n;
 	for(int tests = 1; tests <=n; tests++){
 		for(int i = 0; i<3;i++){
@@ -35,14 +31,18 @@ int main()
 			}
 			sort(input[i], input[i]+3, greater<int>());
 			result = calculate(input[i], true);
-			if(result>max){
+			isDup = checkDup(input[i]);
+			if(!isDup && result>max){
 				max = result;
 				indMax = i;
 			}
 		}
 		sum += max;
 		for(int k = 0; k <3; k++){
-			if(k!=indMax)sum+=calculate(input[k], false);
+			if(k!=indMax){
+				if(checkDup(input[k])sum+=calculate(input[k], true);
+				else sum+=calculate(input[k], false);
+			}
 		}
 		cout << "Test #" << tests << "\n" << sum << "\n";
 		cout << "\n";
